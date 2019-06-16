@@ -1,7 +1,33 @@
-.demo-card-wide.mdl-card {
+.main__description {
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+.main__description {
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+.btn-description {
+  margin: 1rem 0;
+  width: 25rem;
+}
+
+.btn-description:hover {
+  background-color: darkslateblue !important;
+}
+
+@media only screen and (max-width: 900px) {
+  .btn-description {
     width: 100%;
-    margin: 10px;
-    
-  } 
-
-
+    margin: 1rem auto;
+  }
+}

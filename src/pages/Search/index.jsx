@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import SearchItem from '../../components/SearchItem'
+import './style.css'
 
 import axios from 'axios'
 
@@ -27,14 +28,20 @@ class Search extends Component {
 
     renderItem(item) {
         return (
-           <SearchItem item={item}/>
+            <SearchItem key={item.id} item={item} />
         )
     }
 
     render() {
         return (
             <Fragment>
-                <input type="text" onChange={this.onSearch} />
+                <input
+                    type="text"
+                    className="mdl-textfield__input"
+                    onChange={this.onSearch}
+                    placeholder="Digite a mercadoria..."
+                />
+
 
                 <div>
                     {this.state.results.map(this.renderItem)}

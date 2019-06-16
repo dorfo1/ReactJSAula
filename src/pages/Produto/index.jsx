@@ -33,28 +33,42 @@ class Produto extends Component {
             })
     }
 
+
+    _formatPrince = (valor, moeda) => {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: moeda
+        }).format(valor)
+    }
+
+    _formatAdress = (address) => {
+        return address.search_location.neighborhood.name + " - " + address.city.name + "/" + address.country.name
+    }
+
     renderContent() {
         const { data } = this.state;
         console.log(data)
         return (
             <Fragment>
-                <div className="mdl-grid demo-card-wide mdl-card mdl-shadow--4dp">
-                    <div className="mdl-cell imagemProduto mdl-cell--6-col">
-                        <img src={data.pictures[0].url} />
+                <div className="row main__description ">
+                    <div className="col-md-6 col-lg-6 col-sm-12">
+                        <img className="img-fluid" src={data.pictures[0].url} />
                     </div>
-                    <div className="mdl-cell mdl-cell--6-col">
-                        <h3 className="mdl-card__supporting-text">#{data.id}</h3>
-                        <h3 className="mdl-card__supporting-text">{data.sold_quantity} vendidos</h3>
+                    <div className="col-md-6 col-lg-6 col-sm-12">
                         <h2 className="title">{data.title}</h2>
-                        <h4 className="price">Preço: {data.base_price} {data.currency_id}</h4>
+                        <h6 className="mdl-cardsupporting-text">#{data.id}</h6>
+                        <h6 className="mdl-cardsupporting-text">{data.sold_quantity} vendidos </h6>
+                        <h4 className="price">
+                            Preço: {this._formatPrince(data.base_price, data.currency_id)}
+                        </h4>
                         <h4 className="qtd">Quantidade: {data.available_quantity}</h4>
+                        <h4 className="end">Endereço: {this._formatAdress(data.seller_address)}</h4>
                         <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                             Comprar
-                        </button>
+                </button>
                     </div>
-                    
-                    <p className="mdl-cell mdl-cell--10-col">{data.description}</p>
-                    </div>
+                    <p className="col-sm-10">{data.description}</p>
+                </div>
             </Fragment>
         )
     }
